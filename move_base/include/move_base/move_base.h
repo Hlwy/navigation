@@ -97,9 +97,10 @@ namespace move_base {
       /**
        * @brief  Performs a control cycle
        * @param goal A reference to the goal to pursue
+       * @param global_plan A reference to the global plan being used
        * @return True if processing of the goal is done, false otherwise
        */
-      bool executeCycle(geometry_msgs::PoseStamped& goal);
+      bool executeCycle(geometry_msgs::PoseStamped& goal, std::vector<geometry_msgs::PoseStamped>& global_plan);
 
     private:
       /**
@@ -185,7 +186,6 @@ namespace move_base {
       std::string robot_base_frame_, global_frame_;
 
       std::vector<boost::shared_ptr<nav_core::RecoveryBehavior> > recovery_behaviors_;
-      std::vector<std::string> recovery_behavior_names_;
       unsigned int recovery_index_;
 
       geometry_msgs::PoseStamped global_pose_;
@@ -194,12 +194,13 @@ namespace move_base {
       int32_t max_planning_retries_;
       uint32_t planning_retries_;
       double conservative_reset_dist_, clearing_radius_;
-      ros::Publisher current_goal_pub_, vel_pub_, action_goal_pub_, recovery_status_pub_;
+      ros::Publisher current_goal_pub_, vel_pub_, action_goal_pub_;
       ros::Subscriber goal_sub_;
       ros::ServiceServer make_plan_srv_, clear_costmaps_srv_;
       bool shutdown_costmaps_, clearing_rotation_allowed_, recovery_behavior_enabled_;
       bool make_plan_clear_costmap_, make_plan_add_unreachable_goal_;
       double oscillation_timeout_, oscillation_distance_;
+      bool swap_xy_vel_;
 
       MoveBaseState state_;
       RecoveryTrigger recovery_trigger_;

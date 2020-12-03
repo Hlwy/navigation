@@ -1,0 +1,22 @@
+planner_frequency: 0
+controller_frequency: 5
+obstacle_range: 5.0
+raytrace_range: 7.0
+footprint: [[0.28,-0.225],[0.28,0.225],[-0.28,0.225],[-0.28,-0.225],[0.28,-0.225]]
+# footprint: [[0.25,0.175],[0.28,0.175],[0.28,0.225],[0.09,0.225],[0.09,0.175],[-0.09,0.175],[-0.09,0.225],[-0.28,0.225],[-0.28,0.175],[-0.25,0.175],[-0.25,-0.175],[-0.28,-0.175],[-0.28,-0.175],[-0.28,-0.225],[-0.09,-0.225],[-0.09,-0.175],[0.09,-0.175],[0.09,-0.225],[0.28,-0.225],[0.28,-0.175],[0.25,-0.175]]
+map_topic: rtabmap/proj_map
+subscribe_to_updates: true
+global_frame: map
+robot_base_frame: base_link
+max_obstacle_height: 0.7
+footprint_padding: 0.01
+# footprint_padding: -0.05
+robot_radius: 0.34
+
+observation_sources: vboats_cloud #map_obs_cloud # local_obs_cloud local_gnd_cloud
+
+vboats_cloud: {sensor_frame: camera_link, data_type: PointCloud2, topic: vboats/cloud/filtered, marking: true, clearing: true, obstacle_range: 5.0}
+# map_obs_cloud: {sensor_frame: map, data_type: PointCloud2, topic: rtabmap/cloud_obstacles, marking: true, clearing: false, min_obstacle_height: -0.2}
+# local_obs_cloud: {sensor_frame: map, data_type: PointCloud2, topic: rtabmap/local_grid_obstacle, marking: false, clearing: true, min_obstacle_height: -0.2}
+# local_gnd_cloud: {sensor_frame: map, data_type: PointCloud2, topic: rtabmap/cloud_ground, marking: false, clearing: true, observation_persistence: 5.0}
+# map_cloud: {sensor_frame: map, data_type: PointCloud2, topic: rtabmap/octomap_ground, marking: false, clearing: true, observation_persistence: 0}

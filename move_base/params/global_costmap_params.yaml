@@ -1,0 +1,17 @@
+global_costmap:
+     controller_frequency: 1
+     update_frequency: 1.0
+     publish_frequency: 0.1
+     transform_tolerance: 0.5
+     width: 15
+     height: 15
+     static_map: false
+     rolling_window: true
+     inflation_radius: 2.0
+     cost_scaling_factor: 0.75
+     resolution: 0.02
+     global_frame: map
+     robot_base_frame: base_link
+     track_unknown_space: true
+     allow_unknown: true
+     default_tolerance: 2.0
